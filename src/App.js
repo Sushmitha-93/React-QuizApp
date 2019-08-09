@@ -19,13 +19,14 @@ class App extends Component {
   setNextQuesData = () => {
     let { qn } = this.state;
     qn++;
-    this.setState({
-      question: data[qn].question,
-      options: [...data[qn].options],
-      answer: data[qn].answer,
-      qn: qn,
-      isAnswered: false
-    });
+    if (qn < this.state.totalQues)
+      this.setState({
+        question: data[qn].question,
+        options: [...data[qn].options],
+        answer: data[qn].answer,
+        qn: qn,
+        isAnswered: false
+      });
   };
 
   componentDidMount() {
@@ -61,6 +62,7 @@ class App extends Component {
             options={this.state.options}
             onClick={this.handleOnOptionClick}
             onCheckAnswer={this.checkAnswer}
+            isAnswered={this.state.isAnswered}
           />
           <NextQuestion
             onClick={this.setNextQuesData}
