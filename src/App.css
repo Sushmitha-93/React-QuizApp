@@ -18,3 +18,9 @@
   margin-bottom: 30px;
   cursor: pointer;
 }
+.correctOption {
+  background-color: #00cc00 !important;
+}
+.wrongOption {
+  background-color: #ff1a1a !important;
+}

@@ -10,7 +10,7 @@ const Options = props => {
           onClick={() => {
             props.onClick(0);
           }}
-          className="p-4 bg-info border option"
+          className={setClassName()}
         >
           {options[0]}
         </div>
@@ -18,7 +18,7 @@ const Options = props => {
           onClick={() => {
             props.onClick(1);
           }}
-          className="p-4 bg-info border option"
+          className={setClassName()}
         >
           {options[1]}
         </div>
@@ -26,7 +26,7 @@ const Options = props => {
           onClick={() => {
             props.onClick(2);
           }}
-          className="p-4 bg-info border option"
+          className={setClassName()}
         >
           {options[2]}
         </div>
@@ -34,7 +34,7 @@ const Options = props => {
           onClick={() => {
             props.onClick(3);
           }}
-          className="p-4 bg-info border option"
+          className={setClassName()}
         >
           {options[3]}
         </div>
@@ -42,5 +42,9 @@ const Options = props => {
     </React-Fragment>
   );
 };
+
+function setClassName() {
+  return "p-4 bg-info border option";
+}
 
 export default Options;

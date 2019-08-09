@@ -2,6 +2,7 @@ import React, { Component } from "react";
 //import "./App.css";
 import data from "./data/quiz";
 import Options from "./components/options";
+import NextQuestion from "./components/nextQuestion";
 
 //replacing sfc with class component
 class App extends Component {
@@ -11,7 +12,8 @@ class App extends Component {
     answer: 0,
     totalQues: data.length,
     score: 0,
-    qn: -1 //current question index
+    qn: -1, //current question index
+    isAnswered: false
   };
 
   setNextQuesData = () => {
@@ -21,7 +23,8 @@ class App extends Component {
       question: data[qn].question,
       options: [...data[qn].options],
       answer: data[qn].answer,
-      qn: qn
+      qn: qn,
+      isAnswered: false
     });
   };
 
@@ -30,8 +33,10 @@ class App extends Component {
   }
 
   increaseScore = () => {
-    this.setState({ score: this.state.score + 1 });
-    console.log("Score:", this.state.score);
+    let score = this.state.score;
+    score++;
+    this.setState({ score });
+    console.log("state score:", this.state.score); // shows score to be one less than actual score: need to research
   };
 
   checkAnswer = option => {
@@ -39,18 +44,11 @@ class App extends Component {
     return option === data[qn].answer ? true : false;
   };
 
-  handleOnClick = option => {
-    console.log(option);
-
+  handleOnOptionClick = option => {
     const answer = this.checkAnswer(option);
     console.log(answer);
-
-    if (this.state.qn + 1 < this.state.totalQues) {
-      if (answer) {
-        this.increaseScore();
-      }
-      this.setNextQuesData();
-    }
+    if (!this.state.isAnswered) if (answer) this.increaseScore();
+    this.setState({ isAnswered: true });
   };
   render() {
     return (
@@ -59,7 +57,15 @@ class App extends Component {
           <h5 className="card-header">
             {this.state.qn + 1}. {this.state.question}
           </h5>
-          <Options options={this.state.options} onClick={this.handleOnClick} />
+          <Options
+            options={this.state.options}
+            onClick={this.handleOnOptionClick}
+            onCheckAnswer={this.checkAnswer}
+          />
+          <NextQuestion
+            onClick={this.setNextQuesData}
+            collapse={this.state.isAnswered}
+          />
         </div>
       </div>
     );
