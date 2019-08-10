@@ -48,7 +48,7 @@ class App extends Component {
   handleOnOptionClick = option => {
     const answer = this.checkAnswer(option);
     console.log(answer);
-    if (!this.state.isAnswered) if (answer) this.increaseScore();
+    if (answer) this.increaseScore();
     this.setState({ isAnswered: true });
   };
   render() {
@@ -64,10 +64,9 @@ class App extends Component {
             onCheckAnswer={this.checkAnswer}
             isAnswered={this.state.isAnswered}
           />
-          <NextQuestion
-            onClick={this.setNextQuesData}
-            collapse={this.state.isAnswered}
-          />
+          {this.state.isAnswered && (
+            <NextQuestion onClick={this.setNextQuesData} />
+          )}
         </div>
       </div>
     );

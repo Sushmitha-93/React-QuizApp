@@ -19,8 +19,8 @@
   cursor: pointer;
 }
 .correctOption {
-  background-color: #00cc00 !important;
+  background-color: #00cc00;
 }
 .wrongOption {
-  background-color: #ff1a1a !important;
+  background-color: #ff1a1a;
 }

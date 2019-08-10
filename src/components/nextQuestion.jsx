@@ -7,9 +7,7 @@ const NextQuestion = props => {
         props.onClick();
       }}
       type="button"
-      className={
-        props.collapse ? "btn btn-dark btn-lg" : "btn btn-dark btn-lg collapse"
-      }
+      className={"btn btn-dark btn-lg"}
     >
       Next Question
     </button>
