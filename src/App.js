@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import data from "./data/quiz";
 import Options from "./components/options";
 import NextQuestion from "./components/nextQuestion";
+import PopUpCard from "./components/popUpCard";
 
 //replacing sfc with class component
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
     isAnswered: false
   };
 
+  //Gets question from json in quiz.js
   setNextQuesData = () => {
     let { qn } = this.state;
     qn++;
@@ -54,6 +56,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+        <PopUpCard />
         <div className="card col-md-10 offset-md-1 vertical-center">
           <h5 className="card-header">
             {this.state.qn + 1}. {this.state.question}

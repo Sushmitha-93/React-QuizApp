@@ -1,8 +1,9 @@
 .vertical-center {
-  margin-top: 15%;
+  margin-top: 10%;
 }
 .card {
   border-radius: 0rem;
+  padding: 15px;
 }
 .card-header {
   padding-top: 3rem;
@@ -23,4 +24,16 @@
 }
 .wrongOption {
   background-color: #ff1a1a;
+}
+.modalTitle {
+  font-family: "Times New Roman", Times, serif;
+  width: auto;
+}
+.close {
+  padding-left: 0px !important;
+}
+.modalBody {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
 }
