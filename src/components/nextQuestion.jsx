@@ -9,7 +9,7 @@ const NextQuestion = props => {
       type="button"
       className={"btn btn-dark btn-lg"}
     >
-      Next Question
+      {props.lastQues ? "Finish Quiz" : "Next Question"}
     </button>
   );
 };

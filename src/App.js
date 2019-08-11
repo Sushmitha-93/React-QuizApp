@@ -29,6 +29,7 @@ class App extends Component {
         qn: qn,
         isAnswered: false
       });
+    else this.setState({ qn: qn });
   };
 
   componentDidMount() {
@@ -53,14 +54,49 @@ class App extends Component {
     if (answer) this.increaseScore();
     this.setState({ isAnswered: true });
   };
+
+  getPopUpText = () => {
+    {
+      const { qn, totalQues } = this.state;
+      const popUpText = new Object();
+
+      if (qn === totalQues) {
+        popUpText.titleText = "Congratulations!";
+        popUpText.bodyText =
+          "You have completed the quiz. <br /><br />You got: " +
+          this.state.score +
+          " out of " +
+          totalQues +
+          " questions right.";
+        popUpText.buttonText = "Restart";
+
+        return popUpText;
+      }
+      popUpText.titleText = "Welcome to React Quiz";
+      popUpText.bodyText =
+        "This is a quiz application built using ReactJS. <br /><br /> It will dynamically load the question->answers pair and upload them into the components.";
+      popUpText.buttonText = "START THE QUIZ";
+
+      return popUpText;
+    }
+  };
   render() {
+    const { qn, totalQues } = this.state;
+    const popUpText = this.getPopUpText();
     return (
       <div className="container">
-        <PopUpCard />
+        {(qn === 0 || qn === totalQues) && (
+          <PopUpCard
+            titleText={popUpText.titleText}
+            bodyText={popUpText.bodyText}
+            buttonText={popUpText.buttonText}
+          />
+        )}
+
         <div className="card col-md-10 offset-md-1 vertical-center">
-          <h5 className="card-header">
-            {this.state.qn + 1}. {this.state.question}
-          </h5>
+          <h4 className="card-header">
+            {qn < totalQues ? qn + 1 : totalQues}. {this.state.question}
+          </h4>
           <Options
             options={this.state.options}
             onClick={this.handleOnOptionClick}
@@ -68,7 +104,10 @@ class App extends Component {
             isAnswered={this.state.isAnswered}
           />
           {this.state.isAnswered && (
-            <NextQuestion onClick={this.setNextQuesData} />
+            <NextQuestion
+              onClick={this.setNextQuesData}
+              lastQues={qn + 1 >= totalQues}
+            />
           )}
         </div>
       </div>

@@ -8,6 +8,7 @@
 .card-header {
   padding-top: 3rem;
   padding-bottom: 3rem;
+  font-size: 22px;
 }
 .flex-container {
   width: 100%;
@@ -18,6 +19,7 @@
   width: 45%;
   margin-bottom: 30px;
   cursor: pointer;
+  font-size: 17px;
 }
 .correctOption {
   background-color: #00cc00;
@@ -25,15 +27,20 @@
 .wrongOption {
   background-color: #ff1a1a;
 }
-.modalTitle {
-  font-family: "Times New Roman", Times, serif;
-  width: auto;
+.modal-content {
+  border-radius: 0em;
+  text-align: center;
+}
+.modal-header {
+  border-radius: 0em;
+  color: white;
 }
 .close {
   padding-left: 0px !important;
 }
 .modalBody {
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
   font-size: 20px;
+}
+.startButton {
+  border-radius: 0em;
 }
