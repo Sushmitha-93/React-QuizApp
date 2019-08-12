@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+/*Used React-Bootstrap to implement Modal in React as normal Bootstarp requires 
+  running a jQuery function to to automatically open it on page load. React-Bootstap is simple & easy  */
 
-//the show is a state property, that is directly connected to <Modal> component's visibilty.
-//See after sfc implementation for Class Component implementation
+//the "show" is a state property, that is directly connected to <Modal> component's visibilty.
+//See Class Component implementation of below, commented after sfc implementation
 const PopUpCard = props => {
   const [show, setShow] = useState(true);
 
   const handleClose = () => {
-    props.buttonText === "Restart" ? window.location.reload() : setShow(false);
+    props.buttonText === "Restart" ? window.location.reload() : setShow(false); //Restart application on "Restart" otherwise closes popUpCard
   };
-
-  //   const startModal =
-  //     "This is a quiz application built using ReactJS. <br /><br /> It will dynamically load the question->answers pair and upload them into the components.";
 
   return (
     <React-Fragment>
@@ -24,7 +23,7 @@ const PopUpCard = props => {
 
         <Modal.Body
           className="modalBody"
-          dangerouslySetInnerHTML={{ __html: props.bodyText }}
+          dangerouslySetInnerHTML={{ __html: props.bodyText }} //note
         />
 
         <Modal.Footer className="modalFooter justify-content-center">

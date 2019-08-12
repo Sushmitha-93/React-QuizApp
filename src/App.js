@@ -8,13 +8,13 @@ import PopUpCard from "./components/popUpCard";
 //replacing sfc with class component
 class App extends Component {
   state = {
-    question: "",
+    question: "", //intialized with data in quiz.js, with question property of object, from array of objects
     options: [],
     answer: 0,
     totalQues: data.length,
     score: 0,
     qn: -1, //current question index
-    isAnswered: false
+    isAnswered: false //if Question is answered by user i.e, option is selected
   };
 
   //Gets question from json in quiz.js
@@ -61,7 +61,7 @@ class App extends Component {
       const popUpText = new Object();
 
       if (qn === totalQues) {
-        popUpText.titleText = "Congratulations!";
+        popUpText.titleText = "Congratulations !";
         popUpText.bodyText =
           "You have completed the quiz. <br /><br />You got: " +
           this.state.score +
@@ -83,6 +83,7 @@ class App extends Component {
   render() {
     const { qn, totalQues } = this.state;
     const popUpText = this.getPopUpText();
+
     return (
       <div className="container">
         {(qn === 0 || qn === totalQues) && (
@@ -97,12 +98,14 @@ class App extends Component {
           <h4 className="card-header">
             {qn < totalQues ? qn + 1 : totalQues}. {this.state.question}
           </h4>
+
           <Options
             options={this.state.options}
             onClick={this.handleOnOptionClick}
             onCheckAnswer={this.checkAnswer}
             isAnswered={this.state.isAnswered}
           />
+
           {this.state.isAnswered && (
             <NextQuestion
               onClick={this.setNextQuesData}
