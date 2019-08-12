@@ -19,7 +19,11 @@
   width: 45%;
   margin-bottom: 30px;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 18px;
+  transition: 0.3s ease;
+}
+.option:hover {
+  transform: scale(1.02, 1.02);
 }
 .correctOption {
   background-color: #00cc00;
